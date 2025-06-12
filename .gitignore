@@ -8,7 +8,6 @@ vendor/
 
 # Go workspace files
 go.work
-go.sum
 
 # Environment variables
 .env
