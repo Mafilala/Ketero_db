@@ -1,0 +1,48 @@
+# Compiled binaries
+bin/
+dist/
+*.exe
+
+# Dependency directories
+vendor/
+
+# Go workspace files
+go.work
+go.sum
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Development tools
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Test output
+coverage.txt
+profile.out
+
+# Build artifacts
+*.test
+*.out
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore the compiled binary
+main
+app
+
+# Ignore local development files
+docker-compose.yml
+docker-compose.override.yml
+.dockerignore
+
+# Ignore generated files
+/config/*.yaml
+!/config/default.yaml
