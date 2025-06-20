@@ -10,7 +10,7 @@ import (
 func CreateOrderMeasure(ctx context.Context, om models.OrderMeasure) (*models.OrderMeasure, error) {
 	query := `INSERT INTO order_measure (order_id, measure_id, measure, clothing_id)
 			  VALUES ($1, $2, $3, $4)`
-	_, err := initializers.Pool.Exec(ctx, query, om.OrderID, om.MeasureID, om.Measure, om.ClothingID)
+	_, err := initializers.Pool.Exec(ctx, query, om.OrderID, om.MeasureID, *om.Measure, om.ClothingID)
 	if err != nil {
 		return nil, err
 	}

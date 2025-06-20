@@ -54,13 +54,13 @@ func UpdateOrderDetail(c *gin.Context) {
 	}
 
 	if req.Style != nil {
-		current.Style = *req.Style
+		current.Style = req.Style
 	}
 	if req.Fabric != nil {
-		current.Fabric = *req.Fabric
+		current.Fabric = req.Fabric
 	}
 	if req.Color != nil {
-		current.Color = *req.Color
+		current.Color = req.Color
 	}
 
 	if err := services.UpdateOrderDetail(c.Request.Context(), *current); err != nil {

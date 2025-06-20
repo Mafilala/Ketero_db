@@ -11,7 +11,7 @@ func CreateOrderDetail(ctx context.Context, detail models.OrderDetail) (*models.
 	query := `INSERT INTO order_detail (order_id, style, fabric, color)
 	          VALUES ($1, $2, $3, $4)`
 	_, err := initializers.Pool.Exec(ctx, query,
-		detail.OrderID, detail.Style, detail.Fabric, detail.Color)
+		detail.OrderID, *detail.Style, *detail.Fabric, *detail.Color)
 	if err != nil {
 		return nil, err
 	}

@@ -64,7 +64,7 @@ type CreateOrderRequest struct {
 type CreateOrderMeasureRequest struct {
     OrderID    int `json:"order_id" binding:"required"`
     MeasureID  int `json:"measure_id" binding:"required"`
-    Measure    int `json:"measure" binding:"required"`
+    Measure    *int `json:"measure" binding:"required"`
     ClothingID int `json:"clothing_id" binding:"required"`
 }
 
@@ -120,9 +120,9 @@ func (r *UpdatePriceDetailRequest) ToModel(orderID int, existing models.PriceDet
 
 type CreateOrderDetailRequest struct {
 	OrderID int `json:"order_id" binding:"required"`
-	Style   int `json:"style" binding:"required"`
-	Fabric  int `json:"fabric" binding:"required"`
-	Color   int `json:"color" binding:"required"`
+	Style   *int `json:"style" binding:"required"`
+	Fabric  *int `json:"fabric" binding:"required"`
+	Color   *int `json:"color" binding:"required"`
 }
 
 type UpdateOrderDetailRequest struct {

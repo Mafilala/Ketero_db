@@ -28,7 +28,7 @@ profile.out
 # Build artifacts
 *.test
 *.out
-
+ketero.dump
 # OS-specific files
 .DS_Store
 Thumbs.db
