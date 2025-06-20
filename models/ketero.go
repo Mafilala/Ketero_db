@@ -63,8 +63,8 @@ type OrderMeasure struct {
 
 type PriceDetail struct {
 	OrderID int     `json:"order_id" binding:"required"`
-	Price   float64 `json:"price" binding:"required"`
-	Paid    float64 `json:"paid" binding:"required"`
+	Price   *float64 `json:"price" binding:"required"`
+	Paid    *float64 `json:"paid" binding:"required"`
 }
 
 

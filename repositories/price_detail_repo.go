@@ -9,7 +9,7 @@ import (
 
 func CreatePriceDetail(ctx context.Context, detail models.PriceDetail) (*models.PriceDetail, error) {
 	query := `INSERT INTO price_detail (order_id, price, paid) VALUES ($1, $2, $3)`
-	_, err := initializers.Pool.Exec(ctx, query, detail.OrderID, detail.Price, detail.Paid)
+	_, err := initializers.Pool.Exec(ctx, query, detail.OrderID, *detail.Price, *detail.Paid)
 	if err != nil {
 		return nil, err
 	}

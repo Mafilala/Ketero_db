@@ -89,8 +89,8 @@ func (r CreateOrderMeasureRequest) ToModel() models.OrderMeasure {
 
 type CreatePriceDetailRequest struct {
 	OrderID int     `json:"order_id" binding:"required"`
-	Price   float64 `json:"price" binding:"required"`
-	Paid    float64 `json:"paid" binding:"required"`
+	Price   *float64 `json:"price" binding:"required"`
+	Paid    *float64 `json:"paid" binding:"required"`
 }
 
 func (r CreatePriceDetailRequest) ToModel() models.PriceDetail {
@@ -109,10 +109,10 @@ type UpdatePriceDetailRequest struct {
 
 func (r *UpdatePriceDetailRequest) ToModel(orderID int, existing models.PriceDetail) models.PriceDetail {
     if r.Price != nil {
-        existing.Price = *r.Price
+        existing.Price = r.Price
     }
     if r.Paid != nil {
-        existing.Paid = *r.Paid
+        existing.Paid = r.Paid
     }
     existing.OrderID = orderID
     return existing
