@@ -39,7 +39,7 @@ func main() {
 	routes.RegisterOrderMeasureRoutes(r)
 	routes.RegisterPriceDetailRoutes(r)
 	routes.RegisterOrderDetailRoutes(r)
-
+	routes.RegisterUser(r)
 	// Get port from environment with fallback
 	port := os.Getenv("PORT")
 	if port == "" {

@@ -1,32 +1,32 @@
 package routes
 
 import (
-    "github.com/gin-gonic/gin"
-    "github.com/Mafilala/ketero/backend/controllers"
+	"github.com/Mafilala/ketero/backend/controllers"
+	"github.com/gin-gonic/gin"
 )
+
 func RegisterMeasure(r *gin.Engine) {
-   measureGroup := r.Group("/measure")
-    {
-        measureGroup.POST("/", controllers.CreateMeasure)
-        measureGroup.DELETE("/:id", controllers.DeleteMeasure)
-        measureGroup.GET("/:id", controllers.GetMeasureByID)
-        measureGroup.GET("/", controllers.GetAllMeasures)
-	measureGroup.PUT("/:id", controllers.UpdateMeasure)
+	measureGroup := r.Group("/measure")
+	{
+		measureGroup.POST("/", controllers.CreateMeasure)
+		measureGroup.DELETE("/:id", controllers.DeleteMeasure)
+		measureGroup.GET("/:id", controllers.GetMeasureByID)
+		measureGroup.GET("/", controllers.GetAllMeasures)
+		measureGroup.PUT("/:id", controllers.UpdateMeasure)
 
-
-    }
+	}
 }
 
 func RegisterClothingType(r *gin.Engine) {
-    clothingTypeGroup := r.Group("/clothingType")
-    {
-        clothingTypeGroup.POST("/", controllers.CreateClothingType)
-        clothingTypeGroup.DELETE("/:id", controllers.DeleteClothingType)
-        clothingTypeGroup.GET("/", controllers.GetAllClothingTypes)
-        clothingTypeGroup.GET("/:id", controllers.GetClothingTypeByID)
-	clothingTypeGroup.PUT("/:id", controllers.UpdateClothingType)
+	clothingTypeGroup := r.Group("/clothingType")
+	{
+		clothingTypeGroup.POST("/", controllers.CreateClothingType)
+		clothingTypeGroup.DELETE("/:id", controllers.DeleteClothingType)
+		clothingTypeGroup.GET("/", controllers.GetAllClothingTypes)
+		clothingTypeGroup.GET("/:id", controllers.GetClothingTypeByID)
+		clothingTypeGroup.PUT("/:id", controllers.UpdateClothingType)
 
-    }
+	}
 }
 
 func RegisterClothing(r *gin.Engine) {
@@ -50,45 +50,54 @@ func RegisterClient(r *gin.Engine) {
 	}
 }
 
+func RegisterUser(r *gin.Engine) {
+	clientGroup := r.Group("/user")
+	{
+		clientGroup.POST("/", controllers.CreateUser)
+		clientGroup.DELETE("/:id", controllers.DeleteUser)
+		clientGroup.GET("/", controllers.GetUserById)
+	}
+}
+
 func RegisterStatus(r *gin.Engine) {
-    statusGroup := r.Group("/status")
-    {
-        statusGroup.POST("/", controllers.CreateStatus)
-        statusGroup.DELETE("/:id", controllers.DeleteStatus)
-        statusGroup.GET("/", controllers.GetAllStatuses)
-        statusGroup.GET("/:id", controllers.GetStatusByID)
-	statusGroup.PUT("/:id", controllers.UpdateStatus)
-    }
+	statusGroup := r.Group("/status")
+	{
+		statusGroup.POST("/", controllers.CreateStatus)
+		statusGroup.DELETE("/:id", controllers.DeleteStatus)
+		statusGroup.GET("/", controllers.GetAllStatuses)
+		statusGroup.GET("/:id", controllers.GetStatusByID)
+		statusGroup.PUT("/:id", controllers.UpdateStatus)
+	}
 }
 
 func RegisterAddClothing(r *gin.Engine) {
-    clothingPartGroup := r.Group("/clothing_part")
-    {
-        clothingPartGroup.POST("/", controllers.AddClothing)
-        clothingPartGroup.DELETE("/:clothing_type_id/:clothing_id", controllers.RemoveClothingTypePart)
-        clothingPartGroup.GET("/:id", controllers.GetAllClothingParts)    
-    }
+	clothingPartGroup := r.Group("/clothing_part")
+	{
+		clothingPartGroup.POST("/", controllers.AddClothing)
+		clothingPartGroup.DELETE("/:clothing_type_id/:clothing_id", controllers.RemoveClothingTypePart)
+		clothingPartGroup.GET("/:id", controllers.GetAllClothingParts)
+	}
 }
 
 func RegisterClothingMeasures(r *gin.Engine) {
-    clothingMeasurePartGroup := r.Group("/clothing_measure")
-    {
-        clothingMeasurePartGroup.POST("/", controllers.AddMeasure)
-        clothingMeasurePartGroup.DELETE("/:clothing_id/:measure_id", controllers.RemoveMeasure)
-        clothingMeasurePartGroup.GET("/:id", controllers.GetAllClothingMeasures)    
-    }
+	clothingMeasurePartGroup := r.Group("/clothing_measure")
+	{
+		clothingMeasurePartGroup.POST("/", controllers.AddMeasure)
+		clothingMeasurePartGroup.DELETE("/:clothing_id/:measure_id", controllers.RemoveMeasure)
+		clothingMeasurePartGroup.GET("/:id", controllers.GetAllClothingMeasures)
+	}
 }
 
 func RegisterOrderRoutes(r *gin.Engine) {
-    orderGroup := r.Group("/order")
-    {
-        orderGroup.POST("/", controllers.CreateOrder)
-        orderGroup.GET("/:id", controllers.GetOrderByID)
-        orderGroup.DELETE("/:id", controllers.DeleteOrder)
-        orderGroup.GET("/", controllers.GetAllOrders)
-	orderGroup.PATCH("/:id", controllers.PatchOrder)
+	orderGroup := r.Group("/order")
+	{
+		orderGroup.POST("/", controllers.CreateOrder)
+		orderGroup.GET("/:id", controllers.GetOrderByID)
+		orderGroup.DELETE("/:id", controllers.DeleteOrder)
+		orderGroup.GET("/", controllers.GetAllOrders)
+		orderGroup.PATCH("/:id", controllers.PatchOrder)
 
-    }
+	}
 }
 
 func RegisterOrderMeasureRoutes(r *gin.Engine) {
@@ -120,4 +129,3 @@ func RegisterOrderDetailRoutes(r *gin.Engine) {
 		orderDetailGroup.DELETE("/:order_id", controllers.DeleteOrderDetail)
 	}
 }
-
