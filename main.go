@@ -40,6 +40,7 @@ func main() {
 	routes.RegisterPriceDetailRoutes(r)
 	routes.RegisterOrderDetailRoutes(r)
 	routes.RegisterUser(r)
+	routes.RegisterAuthRoutes(r)
 	// Get port from environment with fallback
 	port := os.Getenv("PORT")
 	if port == "" {

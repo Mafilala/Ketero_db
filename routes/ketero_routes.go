@@ -51,11 +51,13 @@ func RegisterClient(r *gin.Engine) {
 }
 
 func RegisterUser(r *gin.Engine) {
-	clientGroup := r.Group("/user")
+	userGroup := r.Group("/user")
 	{
-		clientGroup.POST("/", controllers.CreateUser)
-		clientGroup.DELETE("/:id", controllers.DeleteUser)
-		clientGroup.GET("/", controllers.GetUserById)
+		userGroup.POST("/", controllers.CreateUser)
+		userGroup.DELETE("/:id", controllers.DeleteUser)
+		userGroup.GET("/:id", controllers.GetUserById)
+		userGroup.GET("/", controllers.GetAllUser)
+
 	}
 }
 
@@ -127,5 +129,13 @@ func RegisterOrderDetailRoutes(r *gin.Engine) {
 		orderDetailGroup.GET("/:order_id", controllers.GetOrderDetail)
 		orderDetailGroup.PUT("/:order_id", controllers.UpdateOrderDetail)
 		orderDetailGroup.DELETE("/:order_id", controllers.DeleteOrderDetail)
+	}
+}
+
+func RegisterAuthRoutes(r *gin.Engine) {
+	authGroup := r.Group("/auth_tg_user")
+	{
+		authGroup.POST("/", controllers.WebAppHandler)
+
 	}
 }

@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -12,6 +13,7 @@ import (
 func CreateUser(c *gin.Context) {
 	var req schemas.CreateUserRequest
 	if err := c.BindJSON(&req); err != nil {
+		fmt.Println(err)
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input"})
 		return
 	}
@@ -19,6 +21,7 @@ func CreateUser(c *gin.Context) {
 	user := req.ToModel()
 	newUser, err := services.CreateNewUser(c, &user)
 	if err != nil {
+		fmt.Print(err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
@@ -58,4 +61,16 @@ func DeleteUser(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"deleted_id": deletedID})
+}
+
+func GetAllUser(c *gin.Context) {
+	allUsers, err := services.GetAllUsers(c)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+		fmt.Println(err)
+		return
+	}
+	c.JSON(http.StatusOK, allUsers)
 }

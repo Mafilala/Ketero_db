@@ -18,3 +18,7 @@ func CreateNewUser(ctx context.Context, user *models.User) (*models.User, error)
 func DeleteUser(ctx context.Context, id int) (int, error) {
 	return repositories.DeleteUser(ctx, id)
 }
+
+func GetAllUsers(ctx context.Context) (*[]models.User, error) {
+	return repositories.GetAllUser(ctx)
+}
